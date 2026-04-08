@@ -37,6 +37,7 @@
         }
         .gold-gradient-text {
             background: linear-gradient(to right, #CBA135, #E6C265, #CBA135);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -89,6 +90,21 @@
         .carousel-dots { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 40px; z-index: 20; position: relative; }
         .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); transition: all 0.4s ease; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .carousel-dot.active { width: 24px; background-color: #CBA135; border-radius: 4px; }
+
+        /* Modal de Consulta */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); 
+            backdrop-filter: blur(8px); z-index: 100; display: flex; 
+            align-items: center; justify-content: center; opacity: 0; 
+            pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background: #121212; border: 1px solid rgba(203,161,53,0.3);
+            width: 90%; max-width: 500px; padding: 2rem; border-radius: 4px;
+            transform: translateY(20px); transition: transform 0.4s ease;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-deep">
@@ -442,7 +458,7 @@
                             <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod1-title">Palheta Profissional</h3>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod1-desc">Afinação impecável e grande projeção. Raspagem europeia.</p>
-                        <button onclick="contactWhatsApp('Palheta Profissional')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
+                        <button onclick="openInquiryModal('Palheta Profissional')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
                     </div>
 
                     <div class="luxury-card bg-dark-deep p-6 flex flex-col h-full border border-white/5">
@@ -454,7 +470,7 @@
                             <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod2-title">Palheta Estudante</h3>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod2-desc">Projetada para uma resposta fácil e controle da afinação.</p>
-                        <button onclick="contactWhatsApp('Palheta Estudante')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
+                        <button onclick="openInquiryModal('Palheta Estudante')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
                     </div>
                 </div>
                 </div>
@@ -471,8 +487,8 @@
                 <h2 class="font-serif text-4xl md:text-6xl text-white mb-6 fade-text" data-i18n="academy-title">Transmita o <span class="italic text-gold">Legado</span></h2>
                 <p class="text-xl text-gray-300 font-light mb-12 max-w-2xl mx-auto fade-text" data-i18n="academy-desc">Junte-se à academia boutique. Masterclasses online 1 a 1 e preparação exaustiva para audições.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="#contacto" class="bg-gold text-dark-deep px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors fade-text" data-i18n="academy-btn1">Agendar Audição</a>
-                    <a href="#contacto" class="border border-white text-white px-10 py-4 uppercase tracking-widest text-sm hover:border-gold hover:text-gold transition-colors fade-text" data-i18n="academy-btn2">Informações de Cursos</a>
+                    <button onclick="openInquiryModal('Audição / Masterclass')" class="bg-gold text-dark-deep px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors fade-text" data-i18n="academy-btn1">Agendar Audição</button>
+                    <button onclick="openInquiryModal('Informações de Cursos')" class="border border-white text-white px-10 py-4 uppercase tracking-widest text-sm hover:border-gold hover:text-gold transition-colors fade-text" data-i18n="academy-btn2">Informações de Cursos</button>
                 </div>
             </div>
         </section>
@@ -547,6 +563,12 @@
     </div>
 
     <script>
+        const contactInfo = {
+            whatsapp: "5511950351973",
+            email: "linarez27@yahoo.com",
+            facebook: "https://www.facebook.com/JoseArionLinarezBassoon",
+            instagram: "https://www.instagram.com/jose.linarez.14/"
+        };
         const translations = {
             'pt': {
                 'nav-bio': 'Biografia', 'nav-media': 'Mídias', 'nav-gallery': 'Galeria', 'nav-atelier': 'O Atelier', 'nav-academy': 'Academia', 'nav-contact': 'Contato',
@@ -575,7 +597,7 @@
                 'prod2-title': 'Palheta Estudante', 'prod2-desc': 'Projetada para controle fácil.',
                 'academy-title': 'Transmita o <span class="italic text-gold">Legado</span>', 'academy-desc': 'Masterclasses online 1 a 1.', 'academy-btn1': 'Agendar Audição', 'academy-btn2': 'Info de Cursos',
                 'contact-title': 'Entre em <span class="italic text-gold">Contato</span>', 'contact-desc': 'Para contratações e aulas.', 'contact-loc': 'Envios internacionais.',
-                'form-name': 'Nome', 'form-name-ph': 'Seu nome', 'form-email': 'Email', 'form-email-ph': 'seu@email.com', 'form-subj': 'Assunto', 'form-opt1': 'Pedido de Palhetas', 'form-opt2': 'Masterclasses', 'form-opt3': 'Contratação', 'form-msg': 'Mensagem', 'form-msg-ph': 'Mensagem...', 'form-btn': 'Enviar Mensagem',
+                'form-name': 'Nome', 'form-name-ph': 'Seu nome', 'form-lname': 'Sobrenome', 'form-phone': 'Telefone', 'form-email': 'Email', 'form-email-ph': 'seu@email.com', 'form-subj': 'Assunto', 'form-mode': 'Modalidade', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1': 'Pedido de Palhetas', 'form-opt2': 'Masterclasses', 'form-opt3': 'Contratação', 'form-msg': 'Mensagem', 'form-msg-ph': 'Mensagem...', 'form-btn': 'Enviar Mensagem', 'btn-send-whatsapp': 'Enviar por WhatsApp',
                 'audio-track': 'Mozart: Andante e Rondo'
             },
             'es': {
@@ -605,7 +627,7 @@
                 'prod2-title': 'Caña Estudiante', 'prod2-desc': 'Respuesta fácil.',
                 'academy-title': 'Transmite el <span class="italic text-gold">Legado</span>', 'academy-desc': 'Clases magistrales 1 a 1.', 'academy-btn1': 'Agendar', 'academy-btn2': 'Info',
                 'contact-title': 'Ponte en <span class="italic text-gold">Contacto</span>', 'contact-desc': 'Contrataciones y clases.', 'contact-loc': 'Envíos internacionales.',
-                'form-name': 'Nombre', 'form-name-ph': 'Tu nombre', 'form-email': 'Email', 'form-email-ph': 'tu@email.com', 'form-subj': 'Asunto', 'form-opt1': 'Pedido', 'form-opt2': 'Clases', 'form-opt3': 'Contratación', 'form-msg': 'Mensaje', 'form-msg-ph': 'Mensaje...', 'form-btn': 'Enviar',
+                'form-name': 'Nombre', 'form-name-ph': 'Tu nombre', 'form-lname': 'Apellido', 'form-phone': 'Teléfono', 'form-email': 'Email', 'form-email-ph': 'tu@email.com', 'form-subj': 'Asunto', 'form-mode': 'Modalidad', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1': 'Pedido', 'form-opt2': 'Clases', 'form-opt3': 'Contratación', 'form-msg': 'Mensaje', 'form-msg-ph': 'Mensaje...', 'form-btn': 'Enviar', 'btn-send-whatsapp': 'Enviar por WhatsApp',
                 'audio-track': 'Mozart: Andante y Rondo'
             },
             'en': {
@@ -635,7 +657,7 @@
                 'prod2-title': 'Student Reed', 'prod2-desc': 'Easy response.',
                 'academy-title': 'Pass on the <span class="italic text-gold">Legacy</span>', 'academy-desc': '1-on-1 masterclasses.', 'academy-btn1': 'Schedule', 'academy-btn2': 'Info',
                 'contact-title': 'Get in <span class="italic text-gold">Touch</span>', 'contact-desc': 'Bookings and lessons.', 'contact-loc': 'International shipping.',
-                'form-name': 'Name', 'form-name-ph': 'Name', 'form-email': 'Email', 'form-email-ph': 'email@...', 'form-subj': 'Subject', 'form-opt1': 'Reeds', 'form-opt2': 'Masterclass', 'form-opt3': 'Booking', 'form-msg': 'Message', 'form-msg-ph': 'Message...', 'form-btn': 'Send',
+                'form-name': 'First Name', 'form-name-ph': 'Name', 'form-lname': 'Last Name', 'form-phone': 'Phone Number', 'form-email': 'Email', 'form-email-ph': 'email@...', 'form-subj': 'Subject', 'form-mode': 'Mode', 'mode-inperson': 'In-person', 'mode-online': 'Online', 'form-opt1': 'Reeds', 'form-opt2': 'Masterclass', 'form-opt3': 'Booking', 'form-msg': 'Message', 'form-msg-ph': 'Message...', 'form-btn': 'Send', 'btn-send-whatsapp': 'Send via WhatsApp',
                 'audio-track': 'Mozart: Andante and Rondo'
             }
         };
@@ -790,13 +812,13 @@
         const navbar = document.getElementById('navbar'), heroContent = document.getElementById('hero-content'), heroButtons = document.getElementById('hero-buttons'); 
         
         function contactWhatsApp(product) {
-            const phone = "5511999999999"; // TODO: David, actualiza este número
-            const message = encodeURIComponent(`Olá Maestro José Arion! Tenho interesse na sua ${product}. Gostaria de mais informações.`);
+            const phone = contactInfo.whatsapp;
+            const message = encodeURIComponent(`Olá Maestro José Arion! Tenho interesse na sua ${product}. Gostaria de más informações.`);
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
         function formToWhatsApp() {
-            const phone = "5511999999999"; // TODO: David, actualiza este número
+            const phone = contactInfo.whatsapp;
             const name = document.getElementById('contact-name').value;
             const email = document.getElementById('contact-email').value;
             const subject = document.getElementById('contact-subject').value;
@@ -807,6 +829,58 @@
             const message = encodeURIComponent(`Olá Maestro Arion!\n\nSou ${name} (${email}).\nAssunto: ${subject}\n\nMensagem: ${msg}`);
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
+
+        function openInquiryModal(type) {
+            const modal = document.getElementById('inquiry-modal');
+            const title = document.getElementById('modal-title');
+            const typeInput = document.getElementById('inquiry-type');
+            const modeSelection = document.getElementById('mode-selection');
+            
+            typeInput.value = type;
+            title.innerText = type.includes('Audição') || type.includes('Cursos') ? 'Agendar na Academia' : 'Solicitar Orçamento';
+            
+            if (type.includes('Audição') || type.includes('Cursos')) {
+                modeSelection.classList.remove('hidden');
+            } else {
+                modeSelection.classList.add('hidden');
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInquiryModal() {
+            document.getElementById('inquiry-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phone = contactInfo.whatsapp;
+            const fname = document.getElementById('inq-fname').value;
+            const lname = document.getElementById('inq-lname').value;
+            const userPhone = document.getElementById('inq-phone').value;
+            const email = document.getElementById('inq-email').value;
+            const desc = document.getElementById('inq-desc').value;
+            const type = document.getElementById('inquiry-type').value;
+            
+            let mode = "";
+            if (!document.getElementById('mode-selection').classList.contains('hidden')) {
+                mode = `\nModalidade: ${document.querySelector('input[name="class-mode"]:checked').value}`;
+            }
+
+            const message = encodeURIComponent(
+                `Olá Maestro José Arion!\n\n` +
+                `*Interesse:* ${type}${mode}\n` +
+                `*Nome:* ${fname} ${lname}\n` +
+                `*WhatsApp:* ${userPhone}\n` +
+                `*Email:* ${email}\n\n` +
+                `*Descrição:* ${desc}`
+            );
+            
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            closeInquiryModal();
+        });
 
         window.addEventListener('scroll', () => {
             let scrollY = window.scrollY;
@@ -825,5 +899,52 @@
             link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); mobileBtn.querySelector('i').className = 'fas fa-bars'; });
         });
     </script>
+    <!-- Modal de Consulta -->
+    <div id="inquiry-modal" class="modal-overlay">
+        <div class="modal-content relative text-white">
+            <button onclick="closeInquiryModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gold transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h3 id="modal-title" class="font-serif text-2xl text-white mb-6 pr-8">Solicitar Informação</h3>
+            
+            <form id="inquiry-form" class="space-y-4">
+                <input type="hidden" id="inquiry-type" value="geral">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-name">Nome</label>
+                        <input type="text" id="inq-fname" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="Nome">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-lname">Sobrenome</label>
+                        <input type="text" id="inq-lname" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="Sobrenome">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-phone">WhatsApp / Telefone</label>
+                    <input type="tel" id="inq-phone" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="+55 ...">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-email">Email</label>
+                    <input type="email" id="inq-email" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="seu@email.com">
+                </div>
+                <div id="mode-selection" class="hidden">
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-mode">Modalidade</label>
+                    <div class="flex gap-4">
+                        <label class="flex items-center text-sm text-gray-400 cursor-pointer">
+                            <input type="radio" name="class-mode" value="Presencial" checked class="mr-2 accent-gold"> <span data-i18n="mode-inperson">Presencial (Brasil)</span>
+                        </label>
+                        <label class="flex items-center text-sm text-gray-400 cursor-pointer">
+                            <input type="radio" name="class-mode" value="Online" class="mr-2 accent-gold"> <span data-i18n="mode-online">Online (Exterior)</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-msg">Descrição do Pedido / Necessidade</label>
+                    <textarea id="inq-desc" rows="3" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors resize-none text-sm" placeholder="Ex: Preciso de 5 palhetas profissionais..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gold text-dark-deep py-3 mt-4 uppercase tracking-widest text-xs font-bold hover:bg-white transition-colors fade-text" data-i18n="btn-send-whatsapp">Enviar Orçamento por WhatsApp</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
