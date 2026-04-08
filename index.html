@@ -431,7 +431,7 @@
                     </div>
                     <p class="text-gray-400 max-w-md mt-6 md:mt-0 text-right font-light fade-text" data-i18n="atelier-desc">Cada palheta é esculpida à mão. Clique nas imagens para abrir a galeria macro.</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     
                     <div class="luxury-card bg-dark-deep p-6 flex flex-col h-full border border-white/5">
                         <div class="h-64 mb-6 overflow-hidden bg-black flex items-center justify-center relative cursor-pointer group" onclick="openLightbox('profesional')">
@@ -440,10 +440,9 @@
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod1-title">Palheta Profissional</h3>
-                            <span class="text-gold font-bold text-xl">$45</span>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod1-desc">Afinação impecável e grande projeção. Raspagem europeia.</p>
-                        <button class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-cart">Adicionar ao Carrinho</button>
+                        <button onclick="contactWhatsApp('Palheta Profissional')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
                     </div>
 
                     <div class="luxury-card bg-dark-deep p-6 flex flex-col h-full border border-white/5">
@@ -453,25 +452,11 @@
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod2-title">Palheta Estudante</h3>
-                            <span class="text-gold font-bold text-xl">$28</span>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod2-desc">Projetada para uma resposta fácil e controle da afinação.</p>
-                        <button class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-cart">Adicionar ao Carrinho</button>
+                        <button onclick="contactWhatsApp('Palheta Estudante')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
                     </div>
-
-                    <div class="luxury-card bg-dark-deep p-6 flex flex-col h-full border border-white/5">
-                        <div class="h-64 mb-6 overflow-hidden bg-black flex items-center justify-center relative cursor-pointer group" onclick="openLightbox('contrafagot')">
-                            <div class="absolute top-4 right-4 bg-gold text-dark-deep text-xs font-bold px-3 py-1 uppercase tracking-widest z-10 fade-text" data-i18n="prod3-badge">Sob Encomenda</div>
-                            <img src="palethas 002.jpg" alt="" class="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-50">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"><i class="fas fa-search-plus text-gold text-4xl drop-shadow-lg"></i></div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod3-title">Contrafagote</h3>
-                            <span class="text-gold font-bold text-xl">$55</span>
-                        </div>
-                        <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod3-desc">Feitas sob medida para Heckel ou Püchner.</p>
-                        <button class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-order">Solicitar Encomenda</button>
-                    </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -508,20 +493,20 @@
                     </div>
                 </div>
                 <div>
-                    <form class="space-y-6">
+                    <form id="whatsapp-contact-form" class="space-y-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-name">Nome</label>
-                                <input type="text" class="w-full bg-transparent border-b border-gray-700 focus:border-gold text-white py-2 outline-none transition-colors fade-text" data-i18n-ph="form-name-ph" placeholder="Seu nome">
+                                <input type="text" id="contact-name" class="w-full bg-transparent border-b border-gray-700 focus:border-gold text-white py-2 outline-none transition-colors fade-text" data-i18n-ph="form-name-ph" placeholder="Seu nome">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-email">Email</label>
-                                <input type="email" class="w-full bg-transparent border-b border-gray-700 focus:border-gold text-white py-2 outline-none transition-colors fade-text" data-i18n-ph="form-email-ph" placeholder="seu@email.com">
+                                <input type="email" id="contact-email" class="w-full bg-transparent border-b border-gray-700 focus:border-gold text-white py-2 outline-none transition-colors fade-text" data-i18n-ph="form-email-ph" placeholder="seu@email.com">
                             </div>
                         </div>
                         <div>
                             <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-subj">Assunto</label>
-                            <select class="w-full bg-dark-deep border-b border-gray-700 focus:border-gold text-white py-2 outline-none appearance-none fade-text">
+                            <select id="contact-subject" class="w-full bg-dark-deep border-b border-gray-700 focus:border-gold text-white py-2 outline-none appearance-none fade-text">
                                 <option data-i18n="form-opt1">Pedido de Palhetas</option>
                                 <option data-i18n="form-opt2">Masterclasses</option>
                                 <option data-i18n="form-opt3">Contratação Orquestral</option>
@@ -529,9 +514,9 @@
                         </div>
                         <div>
                             <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-msg">Mensagem</label>
-                            <textarea rows="4" class="w-full bg-transparent border-b border-gray-700 focus:border-gold text-white py-2 outline-none transition-colors resize-none fade-text" data-i18n-ph="form-msg-ph" placeholder="Mensagem..."></textarea>
+                            <textarea id="contact-message" rows="4" class="w-full bg-transparent border-b border-gray-700 focus:border-gold text-white py-2 outline-none transition-colors resize-none fade-text" data-i18n-ph="form-msg-ph" placeholder="Mensagem..."></textarea>
                         </div>
-                        <button type="button" class="bg-white text-dark-deep px-8 py-3 uppercase tracking-widest text-sm font-bold hover:bg-gold transition-colors w-full sm:w-auto fade-text" data-i18n="form-btn">Enviar Mensagem</button>
+                        <button type="button" onclick="formToWhatsApp()" class="bg-white text-dark-deep px-8 py-3 uppercase tracking-widest text-sm font-bold hover:bg-gold transition-colors w-full sm:w-auto fade-text" data-i18n="form-btn">Enviar Mensagem</button>
                     </form>
                 </div>
             </div>
@@ -581,9 +566,9 @@
                 'gallery-img9-title': 'Filharmonia Narodowa', 'gallery-img9-desc': 'Varsóvia.', 'gallery-img10-title': 'Turnê Europeia', 'gallery-img10-desc': 'Eslovênia.',
                 'gallery-img11-title': 'Apresentação de Gala', 'gallery-img11-desc': 'Fagotista Principal.', 'gallery-img12-title': 'Benson Bell', 'gallery-img12-desc': 'Com meu luthier.',
                 'gallery-img13-title': 'Maestro Ramón Merchán', 'gallery-img13-desc': 'Com meu maestro (2023).',
-                'atelier-subtitle': 'Artesanato de Precisão', 'atelier-title': 'O <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Cada palheta é esculpida à mão.',
-                'prod1-title': 'Palheta Profissional', 'prod1-desc': 'Afinação impecável. Raspagem europeia.', 'btn-cart': 'Adicionar ao Carrinho',
-                'prod2-title': 'Palheta Estudante', 'prod2-desc': 'Projetada para controle fácil.', 'prod3-badge': 'Sob Encomenda', 'prod3-title': 'Contrafagote', 'prod3-desc': 'Feitas sob medida.', 'btn-order': 'Solicitar Encomenda',
+                'atelier-subtitle': 'Artesanato de Precisão', 'atelier-title': 'O <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Cada palheta é esculpida à mão. Clique nas imagens para abrir a galeria macro.',
+                'prod1-title': 'Palheta Profissional', 'prod1-desc': 'Afinação impecável. Raspagem europeia.', 'btn-whatsapp': 'Solicitar por WhatsApp',
+                'prod2-title': 'Palheta Estudante', 'prod2-desc': 'Projetada para controle fácil.',
                 'academy-title': 'Transmita o <span class="italic text-gold">Legado</span>', 'academy-desc': 'Masterclasses online 1 a 1.', 'academy-btn1': 'Agendar Audição', 'academy-btn2': 'Info de Cursos',
                 'contact-title': 'Entre em <span class="italic text-gold">Contato</span>', 'contact-desc': 'Para contratações e aulas.', 'contact-loc': 'Envios internacionais.',
                 'form-name': 'Nome', 'form-name-ph': 'Seu nome', 'form-email': 'Email', 'form-email-ph': 'seu@email.com', 'form-subj': 'Assunto', 'form-opt1': 'Pedido de Palhetas', 'form-opt2': 'Masterclasses', 'form-opt3': 'Contratação', 'form-msg': 'Mensagem', 'form-msg-ph': 'Mensagem...', 'form-btn': 'Enviar Mensagem',
@@ -607,9 +592,9 @@
                 'gallery-img9-title': 'Filharmonia Narodowa', 'gallery-img9-desc': 'Polonia.', 'gallery-img10-title': 'Gira Europea', 'gallery-img10-desc': 'Eslovenia.',
                 'gallery-img11-title': 'Gala', 'gallery-img11-desc': 'Fagotista Principal.', 'gallery-img12-title': 'Benson Bell', 'gallery-img12-desc': 'Con mi luthier.',
                 'gallery-img13-title': 'Maestro Ramón Merchán', 'gallery-img13-desc': 'Con mi maestro (2023).',
-                'atelier-subtitle': 'Artesanía', 'atelier-title': 'El <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Cañas talladas a mano.',
-                'prod1-title': 'Caña Profesional', 'prod1-desc': 'Afinación impecable.', 'btn-cart': 'Añadir al Carrito',
-                'prod2-title': 'Caña Estudiante', 'prod2-desc': 'Respuesta fácil.', 'prod3-badge': 'Bajo Pedido', 'prod3-title': 'Contrafagot', 'prod3-desc': 'A medida.', 'btn-order': 'Solicitar',
+                'atelier-subtitle': 'Artesanía', 'atelier-title': 'El <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Cañas talladas a mano. Haz clic en las imágenes para abrir la galería macro.',
+                'prod1-title': 'Caña Profesional', 'prod1-desc': 'Afinación impecable.', 'btn-whatsapp': 'Solicitar por WhatsApp',
+                'prod2-title': 'Caña Estudiante', 'prod2-desc': 'Respuesta fácil.',
                 'academy-title': 'Transmite el <span class="italic text-gold">Legado</span>', 'academy-desc': 'Clases magistrales 1 a 1.', 'academy-btn1': 'Agendar', 'academy-btn2': 'Info',
                 'contact-title': 'Ponte en <span class="italic text-gold">Contacto</span>', 'contact-desc': 'Contrataciones y clases.', 'contact-loc': 'Envíos internacionales.',
                 'form-name': 'Nombre', 'form-name-ph': 'Tu nombre', 'form-email': 'Email', 'form-email-ph': 'tu@email.com', 'form-subj': 'Asunto', 'form-opt1': 'Pedido', 'form-opt2': 'Clases', 'form-opt3': 'Contratación', 'form-msg': 'Mensaje', 'form-msg-ph': 'Mensaje...', 'form-btn': 'Enviar',
@@ -633,9 +618,9 @@
                 'gallery-img9-title': 'Philharmonic', 'gallery-img9-desc': 'Warsaw.', 'gallery-img10-title': 'Tour', 'gallery-img10-desc': 'Slovenia.',
                 'gallery-img11-title': 'Gala', 'gallery-img11-desc': 'Principal Bassoon.', 'gallery-img12-title': 'Benson Bell', 'gallery-img12-desc': 'With my luthier.',
                 'gallery-img13-title': 'Maestro Ramón Merchán', 'gallery-img13-desc': 'With my teacher (2023).',
-                'atelier-subtitle': 'Craftsmanship', 'atelier-title': 'The <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Hand-carved reeds.',
-                'prod1-title': 'Professional Reed', 'prod1-desc': 'Impeccable tuning.', 'btn-cart': 'Add to Cart',
-                'prod2-title': 'Student Reed', 'prod2-desc': 'Easy response.', 'prod3-badge': 'On Demand', 'prod3-title': 'Contrabassoon', 'prod3-desc': 'Custom made.', 'btn-order': 'Order',
+                'atelier-subtitle': 'Craftsmanship', 'atelier-title': 'The <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Hand-carved reeds. Click on the images to open the macro gallery.',
+                'prod1-title': 'Professional Reed', 'prod1-desc': 'Impeccable tuning.', 'btn-whatsapp': 'Request via WhatsApp',
+                'prod2-title': 'Student Reed', 'prod2-desc': 'Easy response.',
                 'academy-title': 'Pass on the <span class="italic text-gold">Legacy</span>', 'academy-desc': '1-on-1 masterclasses.', 'academy-btn1': 'Schedule', 'academy-btn2': 'Info',
                 'contact-title': 'Get in <span class="italic text-gold">Touch</span>', 'contact-desc': 'Bookings and lessons.', 'contact-loc': 'International shipping.',
                 'form-name': 'Name', 'form-name-ph': 'Name', 'form-email': 'Email', 'form-email-ph': 'email@...', 'form-subj': 'Subject', 'form-opt1': 'Reeds', 'form-opt2': 'Masterclass', 'form-opt3': 'Booking', 'form-msg': 'Message', 'form-msg-ph': 'Message...', 'form-btn': 'Send',
@@ -684,16 +669,16 @@
             'galeria': [
                 { src: 'Arion 001.jpg', caption: 'Temporada OSESP março 2026' },
                 { src: '117385340_147609080333527_3344028411801868262_n.jpg', caption: 'Sala São Paulo' },
-                { src: 'IMG_6123.jpg', caption: 'Legado de Weber - Semperoper Dresden' },
-                { src: 'IMG_6119.jpg', caption: 'Inspiração Clássica - Semperoper Dresden' },
-                { src: 'IMG_6320.jpg', caption: 'Fábrica Wilhelm Heckel - 2010' },
-                { src: 'IMG_7397.jpg', caption: 'Maestro José Antonio Abreu - 2011' },
-                { src: 'IMG_7421.jpg', caption: 'Maestro Gustavo Dudamel - 2011' },
-                { src: 'IMG_6376.jpg', caption: 'Auditorio Nacional de Música - Madrid' },
-                { src: 'IMG_6300.jpg', caption: 'Filharmonia Narodowa - Varsóvia' },
-                { src: 'IMG_6038.jpg', caption: 'Turnê Europeia - Maribor' },
-                { src: 'IMG_6050.jpg', caption: 'Apresentação de Gala' },
-                { src: 'IMG_7340.jpg', caption: 'Benson Bell' },
+                { src: 'IMG_6123.JPG', caption: 'Legado de Weber - Semperoper Dresden' },
+                { src: 'IMG_6119.JPG', caption: 'Inspiração Clássica - Semperoper Dresden' },
+                { src: 'IMG_6320.JPG', caption: 'Fábrica Wilhelm Heckel - 2010' },
+                { src: 'IMG_7397.JPG', caption: 'Maestro José Antonio Abreu - 2011' },
+                { src: 'IMG_7421.JPG', caption: 'Maestro Gustavo Dudamel - 2011' },
+                { src: 'IMG_6376.JPG', caption: 'Auditorio Nacional de Música - Madrid' },
+                { src: 'IMG_6300.JPG', caption: 'Filharmonia Narodowa - Varsóvia' },
+                { src: 'IMG_6038.JPG', caption: 'Turnê Europeia - Maribor' },
+                { src: 'IMG_6050.JPG', caption: 'Apresentação de Gala' },
+                { src: 'IMG_7340.JPG', caption: 'Benson Bell' },
                 { src: 'Arion_Ramon.jpeg', caption: 'Maestro Ramón Merchán' }
             ],
             
@@ -787,6 +772,26 @@
         });
 
         const navbar = document.getElementById('navbar'), heroContent = document.getElementById('hero-content'), heroButtons = document.getElementById('hero-buttons'); 
+        
+        function contactWhatsApp(product) {
+            const phone = "5511999999999"; // TODO: David, actualiza este número
+            const message = encodeURIComponent(`Olá Maestro José Arion! Tenho interesse na sua ${product}. Gostaria de mais informações.`);
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        function formToWhatsApp() {
+            const phone = "5511999999999"; // TODO: David, actualiza este número
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const msg = document.getElementById('contact-message').value;
+            
+            if(!name || !msg) { alert("Por favor, preencha nome e mensagem."); return; }
+
+            const message = encodeURIComponent(`Olá Maestro Arion!\n\nSou ${name} (${email}).\nAssunto: ${subject}\n\nMensagem: ${msg}`);
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
         window.addEventListener('scroll', () => {
             let scrollY = window.scrollY;
             if (scrollY > 50) { navbar.classList.add('nav-scrolled', 'py-4'); navbar.classList.remove('py-6'); } 
