@@ -91,20 +91,6 @@
         .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); transition: all 0.4s ease; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .carousel-dot.active { width: 24px; background-color: #CBA135; border-radius: 4px; }
 
-        /* Modal de Consulta */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); 
-            backdrop-filter: blur(8px); z-index: 100; display: flex; 
-            align-items: center; justify-content: center; opacity: 0; 
-            pointer-events: none; transition: opacity 0.4s ease;
-        }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background: #121212; border: 1px solid rgba(203,161,53,0.3);
-            width: 90%; max-width: 500px; padding: 2rem; border-radius: 4px;
-            transform: translateY(20px); transition: transform 0.4s ease;
-        }
-        .modal-overlay.active .modal-content { transform: translateY(0); }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-deep">
@@ -307,8 +293,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 5)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_7397.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_7397.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img6-title">Maestro José Antonio Abreu</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img6-desc">Encontro em Caracas (2011).</p>
@@ -317,8 +303,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 6)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_7421.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_7421.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img7-title">Maestro Gustavo Dudamel</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img7-desc">Encontro em Caracas (2011).</p>
@@ -327,8 +313,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 7)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_6376.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_6376.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img8-title">Auditorio Nacional</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img8-desc">Apresentação em Madrid, Espanha.</p>
@@ -337,8 +323,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 8)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_6300.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_6300.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img9-title">Filharmonia Narodowa</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img9-desc">Apresentação em Varsóvia, Polônia.</p>
@@ -347,8 +333,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 9)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_6038.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_6038.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img10-title">Turnê Europeia</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img10-desc">Maribor, Eslovênia.</p>
@@ -357,8 +343,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 10)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_6050.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_6050.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img11-title">Apresentação de Gala</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img11-desc">Fagotista Principal no palco.</p>
@@ -367,8 +353,8 @@
                         </div>
                     </div>
                     <div class="carousel-item group" onclick="openLightbox('galeria', 11)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="IMG_7340.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="IMG_7340.JPG" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img12-title">Benson Bell</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img12-desc">Com meu luthier Benson Bell.</p>
@@ -378,8 +364,8 @@
                     </div>
 
                     <div class="carousel-item prev group" onclick="openLightbox('galeria', 12)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="Arion_Ramon.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="Arion_Ramon.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img13-title">Maestro Ramón Merchán</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img13-desc">Com meu maestro de fagote (2023).</p>
@@ -388,8 +374,8 @@
                         </div>
                     </div>
                           <div class="carousel-item prev group" onclick="openLightbox('galeria', 13)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="Klaus_Thunemann.jpg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="Klaus_Thunemann.jpg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
                                 <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img14-title">Maestro Klaus Thunemann</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img14-desc">Com o Maestro Klaus Thunemann. Alemanha.</p>
@@ -398,30 +384,30 @@
                         </div>
                     </div>
 					      <div class="carousel-item prev group" onclick="openLightbox('galeria', 14)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="Heinz_Holliger.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="Heinz_Holliger.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
-                                <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img14-title">Maestro Heinz Holliger</h4>
+                                <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img15-title">Maestro Heinz Holliger</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img15-desc">Com o Maestro Heinz Holliger. São Paulo.</p>
                                 <i class="fas fa-expand text-white/60 absolute right-6 bottom-6 text-2xl opacity-0 group-hover:opacity-100 transition-opacity"></i>
                             </div>
                         </div>
                     </div>
 						 <div class="carousel-item prev group" onclick="openLightbox('galeria', 15)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="Camaleão_bassonns.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="Camaleão_bassonns.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
-                                <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img14-title">Grupo Camaleão Bassonns</h4>
+                                <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img16-title">Grupo Camaleão Bassonns</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img16-desc">São Paulo.</p>
                                 <i class="fas fa-expand text-white/60 absolute right-6 bottom-6 text-2xl opacity-0 group-hover:opacity-100 transition-opacity"></i>
                             </div>
                         </div>
                     </div>
 					     <div class="carousel-item prev group" onclick="openLightbox('galeria', 16)">
-                        <div class="relative w-full h-full rounded-2xl overflow-hidden">
-                            <img src="Aula_com_alunos.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden will-change-transform">
+                            <img loading="lazy" decoding="async" src="Aula_com_alunos.jpeg" alt="" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent">
-                                <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img14-title">Aula com alunos iniciantes</h4>
+                                <h4 class="text-white font-serif text-2xl fade-text" data-i18n="gallery-img17-title">Aula com alunos iniciantes</h4>
                                 <p class="text-gold text-sm fade-text" data-i18n="gallery-img17-desc">Aula com alunos iniciantes. Yaracuy (2023).</p>
                                 <i class="fas fa-expand text-white/60 absolute right-6 bottom-6 text-2xl opacity-0 group-hover:opacity-100 transition-opacity"></i>
                             </div>
@@ -451,26 +437,26 @@
                     
                     <div class="luxury-card bg-dark-deep p-6 flex flex-col h-full border border-white/5">
                         <div class="h-64 mb-6 overflow-hidden bg-black flex items-center justify-center relative cursor-pointer group" onclick="openLightbox('profesional')">
-                            <img src="palethas 003.jpg" alt="" class="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-50">
+                            <img loading="lazy" decoding="async" src="palethas 003.jpg" alt="" class="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-50">
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><i class="fas fa-search-plus text-gold text-4xl drop-shadow-lg"></i></div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod1-title">Palheta Profissional</h3>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod1-desc">Afinação impecável e grande projeção. Raspagem europeia.</p>
-                        <button onclick="openInquiryModal('Palheta Profissional')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
+                        <button onclick="prepareContact('form-opt1a')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
                     </div>
 
                     <div class="luxury-card bg-dark-deep p-6 flex flex-col h-full border border-white/5">
                         <div class="h-64 mb-6 overflow-hidden bg-black flex items-center justify-center relative cursor-pointer group" onclick="openLightbox('estudiante')">
-                            <img src="palethas 001.jpg" alt="" class="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-50">
+                            <img loading="lazy" decoding="async" src="palethas 001.jpg" alt="" class="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-50">
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><i class="fas fa-search-plus text-gold text-4xl drop-shadow-lg"></i></div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-2xl text-white fade-text" data-i18n="prod2-title">Palheta Estudante</h3>
                         </div>
                         <p class="text-gray-400 text-sm mb-6 flex-grow fade-text" data-i18n="prod2-desc">Projetada para uma resposta fácil e controle da afinação.</p>
-                        <button onclick="openInquiryModal('Palheta Estudante')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
+                        <button onclick="prepareContact('form-opt1b')" class="w-full border border-gold text-gold py-3 hover:bg-gold hover:text-dark-deep transition-colors uppercase tracking-widest text-xs font-bold fade-text" data-i18n="btn-whatsapp">Solicitar por WhatsApp</button>
                     </div>
                 </div>
                 </div>
@@ -487,8 +473,8 @@
                 <h2 class="font-serif text-4xl md:text-6xl text-white mb-6 fade-text" data-i18n="academy-title">Transmita o <span class="italic text-gold">Legado</span></h2>
                 <p class="text-xl text-gray-300 font-light mb-12 max-w-2xl mx-auto fade-text" data-i18n="academy-desc">Junte-se à academia boutique. Masterclasses online 1 a 1 e preparação exaustiva para audições.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <button onclick="openInquiryModal('Audição / Masterclass')" class="bg-gold text-dark-deep px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors fade-text" data-i18n="academy-btn1">Agendar Audição</button>
-                    <button onclick="openInquiryModal('Informações de Cursos')" class="border border-white text-white px-10 py-4 uppercase tracking-widest text-sm hover:border-gold hover:text-gold transition-colors fade-text" data-i18n="academy-btn2">Informações de Cursos</button>
+                    <button onclick="prepareContact('form-opt2')" class="bg-gold text-dark-deep px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors fade-text" data-i18n="academy-btn1">Agendar Audição</button>
+                    <button onclick="prepareContact('form-opt2')" class="border border-white text-white px-10 py-4 uppercase tracking-widest text-sm hover:border-gold hover:text-gold transition-colors fade-text" data-i18n="academy-btn2">Informações de Cursos</button>
                 </div>
             </div>
         </section>
@@ -523,7 +509,8 @@
                         <div>
                             <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-subj">Assunto</label>
                             <select id="contact-subject" class="w-full bg-dark-deep border-b border-gray-700 focus:border-gold text-white py-2 outline-none appearance-none fade-text">
-                                <option data-i18n="form-opt1">Pedido de Palhetas</option>
+                                <option data-i18n="form-opt1a">Palheta Profissional</option>
+                                <option data-i18n="form-opt1b">Palheta Estudante</option>
                                 <option data-i18n="form-opt2">Masterclasses</option>
                                 <option data-i18n="form-opt3">Contratação Orquestral</option>
                             </select>
@@ -597,7 +584,7 @@
                 'prod2-title': 'Palheta Estudante', 'prod2-desc': 'Projetada para controle fácil.',
                 'academy-title': 'Transmita o <span class="italic text-gold">Legado</span>', 'academy-desc': 'Masterclasses online 1 a 1.', 'academy-btn1': 'Agendar Audição', 'academy-btn2': 'Info de Cursos',
                 'contact-title': 'Entre em <span class="italic text-gold">Contato</span>', 'contact-desc': 'Para contratações e aulas.', 'contact-loc': 'Envios internacionais.',
-                'form-name': 'Nome', 'form-name-ph': 'Seu nome', 'form-lname': 'Sobrenome', 'form-phone': 'Telefone', 'form-email': 'Email', 'form-email-ph': 'seu@email.com', 'form-subj': 'Assunto', 'form-mode': 'Modalidade', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1': 'Pedido de Palhetas', 'form-opt2': 'Masterclasses', 'form-opt3': 'Contratação', 'form-msg': 'Mensagem', 'form-msg-ph': 'Mensagem...', 'form-btn': 'Enviar Mensagem', 'btn-send-whatsapp': 'Enviar por WhatsApp',
+                'form-name': 'Nome', 'form-name-ph': 'Seu nome', 'form-lname': 'Sobrenome', 'form-phone': 'Telefone', 'form-email': 'Email', 'form-email-ph': 'seu@email.com', 'form-subj': 'Assunto', 'form-mode': 'Modalidade', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1a': 'Palheta Profissional', 'form-opt1b': 'Palheta Estudante', 'form-opt2': 'Masterclasses', 'form-opt3': 'Contratação', 'form-msg': 'Mensagem', 'form-msg-ph': 'Mensagem...', 'form-btn': 'Enviar Mensagem', 'btn-send-whatsapp': 'Enviar por WhatsApp',
                 'audio-track': 'Mozart: Andante e Rondo'
             },
             'es': {
@@ -627,7 +614,7 @@
                 'prod2-title': 'Caña Estudiante', 'prod2-desc': 'Respuesta fácil.',
                 'academy-title': 'Transmite el <span class="italic text-gold">Legado</span>', 'academy-desc': 'Clases magistrales 1 a 1.', 'academy-btn1': 'Agendar', 'academy-btn2': 'Info',
                 'contact-title': 'Ponte en <span class="italic text-gold">Contacto</span>', 'contact-desc': 'Contrataciones y clases.', 'contact-loc': 'Envíos internacionales.',
-                'form-name': 'Nombre', 'form-name-ph': 'Tu nombre', 'form-lname': 'Apellido', 'form-phone': 'Teléfono', 'form-email': 'Email', 'form-email-ph': 'tu@email.com', 'form-subj': 'Asunto', 'form-mode': 'Modalidad', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1': 'Pedido', 'form-opt2': 'Clases', 'form-opt3': 'Contratación', 'form-msg': 'Mensaje', 'form-msg-ph': 'Mensaje...', 'form-btn': 'Enviar', 'btn-send-whatsapp': 'Enviar por WhatsApp',
+                'form-name': 'Nombre', 'form-name-ph': 'Tu nombre', 'form-lname': 'Apellido', 'form-phone': 'Teléfono', 'form-email': 'Email', 'form-email-ph': 'tu@email.com', 'form-subj': 'Asunto', 'form-mode': 'Modalidad', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1a': 'Caña Profesional', 'form-opt1b': 'Caña Estudiante', 'form-opt2': 'Clases', 'form-opt3': 'Contratación', 'form-msg': 'Mensaje', 'form-msg-ph': 'Mensaje...', 'form-btn': 'Enviar', 'btn-send-whatsapp': 'Enviar por WhatsApp',
                 'audio-track': 'Mozart: Andante y Rondo'
             },
             'en': {
@@ -657,7 +644,7 @@
                 'prod2-title': 'Student Reed', 'prod2-desc': 'Easy response.',
                 'academy-title': 'Pass on the <span class="italic text-gold">Legacy</span>', 'academy-desc': '1-on-1 masterclasses.', 'academy-btn1': 'Schedule', 'academy-btn2': 'Info',
                 'contact-title': 'Get in <span class="italic text-gold">Touch</span>', 'contact-desc': 'Bookings and lessons.', 'contact-loc': 'International shipping.',
-                'form-name': 'First Name', 'form-name-ph': 'Name', 'form-lname': 'Last Name', 'form-phone': 'Phone Number', 'form-email': 'Email', 'form-email-ph': 'email@...', 'form-subj': 'Subject', 'form-mode': 'Mode', 'mode-inperson': 'In-person', 'mode-online': 'Online', 'form-opt1': 'Reeds', 'form-opt2': 'Masterclass', 'form-opt3': 'Booking', 'form-msg': 'Message', 'form-msg-ph': 'Message...', 'form-btn': 'Send', 'btn-send-whatsapp': 'Send via WhatsApp',
+                'form-name': 'First Name', 'form-name-ph': 'Name', 'form-lname': 'Last Name', 'form-phone': 'Phone Number', 'form-email': 'Email', 'form-email-ph': 'email@...', 'form-subj': 'Subject', 'form-mode': 'Mode', 'mode-inperson': 'In-person', 'mode-online': 'Online', 'form-opt1a': 'Professional Reed', 'form-opt1b': 'Student Reed', 'form-opt2': 'Masterclass', 'form-opt3': 'Booking', 'form-msg': 'Message', 'form-msg-ph': 'Message...', 'form-btn': 'Send', 'btn-send-whatsapp': 'Send via WhatsApp',
                 'audio-track': 'Mozart: Andante and Rondo'
             }
         };
@@ -793,14 +780,17 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage('pt');
-            if(carouselItems.length > 0) {
+            if(carouselItems && carouselItems.length > 0) {
                 if(dotsContainer) {
                     carouselItems.forEach((_, i) => {
-                        const dot = document.createElement('div'); dot.className = 'carousel-dot';
-                        dot.onclick = () => goToCarouselIndex(i); dotsContainer.appendChild(dot);
+                        const dot = document.createElement('div'); 
+                        dot.className = 'carousel-dot';
+                        dot.onclick = () => goToCarouselIndex(i); 
+                        dotsContainer.appendChild(dot);
                     });
                 }
-                updateCarouselState(); startCarouselInterval();
+                updateCarouselState(); 
+                startCarouselInterval();
                 const container = document.querySelector('.carousel-container');
                 if(container) {
                     container.addEventListener('mouseenter', () => clearInterval(carouselInterval));
@@ -808,6 +798,23 @@
                 }
             }
         });
+
+        function prepareContact(optionKey) {
+            const subjectSelect = document.getElementById('contact-subject');
+            if(subjectSelect) {
+                if(optionKey === 'form-opt1a') subjectSelect.selectedIndex = 0;
+                else if(optionKey === 'form-opt1b') subjectSelect.selectedIndex = 1;
+                else if(optionKey === 'form-opt2') subjectSelect.selectedIndex = 2;
+                else if(optionKey === 'form-opt3') subjectSelect.selectedIndex = 3;
+            }
+            const contactSection = document.getElementById('contacto');
+            if(contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    document.getElementById('contact-name').focus();
+                }, 800);
+            }
+        }
 
         const navbar = document.getElementById('navbar'), heroContent = document.getElementById('hero-content'), heroButtons = document.getElementById('hero-buttons'); 
         
@@ -830,65 +837,33 @@
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
-        function openInquiryModal(type) {
-            const modal = document.getElementById('inquiry-modal');
-            const title = document.getElementById('modal-title');
-            const typeInput = document.getElementById('inquiry-type');
-            const modeSelection = document.getElementById('mode-selection');
-            
-            typeInput.value = type;
-            title.innerText = type.includes('Audição') || type.includes('Cursos') ? 'Agendar na Academia' : 'Solicitar Orçamento';
-            
-            if (type.includes('Audição') || type.includes('Cursos')) {
-                modeSelection.classList.remove('hidden');
-            } else {
-                modeSelection.classList.add('hidden');
-            }
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
 
-        function closeInquiryModal() {
-            document.getElementById('inquiry-modal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
 
-        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const phone = contactInfo.whatsapp;
-            const fname = document.getElementById('inq-fname').value;
-            const lname = document.getElementById('inq-lname').value;
-            const userPhone = document.getElementById('inq-phone').value;
-            const email = document.getElementById('inq-email').value;
-            const desc = document.getElementById('inq-desc').value;
-            const type = document.getElementById('inquiry-type').value;
-            
-            let mode = "";
-            if (!document.getElementById('mode-selection').classList.contains('hidden')) {
-                mode = `\nModalidade: ${document.querySelector('input[name="class-mode"]:checked').value}`;
-            }
-
-            const message = encodeURIComponent(
-                `Olá Maestro José Arion!\n\n` +
-                `*Interesse:* ${type}${mode}\n` +
-                `*Nome:* ${fname} ${lname}\n` +
-                `*WhatsApp:* ${userPhone}\n` +
-                `*Email:* ${email}\n\n` +
-                `*Descrição:* ${desc}`
-            );
-            
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-            closeInquiryModal();
-        });
-
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            let scrollY = window.scrollY;
-            if (scrollY > 50) { navbar.classList.add('nav-scrolled', 'py-4'); navbar.classList.remove('py-6'); } 
-            else { navbar.classList.remove('nav-scrolled', 'py-4'); navbar.classList.add('py-6'); }
-            if (heroContent) { heroContent.style.transform = `translateY(${scrollY * 0.4}px)`; heroContent.style.opacity = 1 - (scrollY / 500); }
-            if (heroButtons) { heroButtons.style.transform = `translateY(${scrollY * 0.4}px)`; heroButtons.style.opacity = 1 - (scrollY / 500); }
-        });
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    let scrollY = window.scrollY;
+                    if (scrollY > 50) { 
+                        navbar.classList.add('nav-scrolled', 'py-4'); 
+                        navbar.classList.remove('py-6'); 
+                    } else { 
+                        navbar.classList.remove('nav-scrolled', 'py-4'); 
+                        navbar.classList.add('py-6'); 
+                    }
+                    if (heroContent) { 
+                        heroContent.style.transform = `translateY(${scrollY * 0.4}px) translateZ(0)`; 
+                        heroContent.style.opacity = 1 - (scrollY / 500); 
+                    }
+                    if (heroButtons) { 
+                        heroButtons.style.transform = `translateY(${scrollY * 0.4}px) translateZ(0)`; 
+                        heroButtons.style.opacity = 1 - (scrollY / 500); 
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
 
         const mobileBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
         mobileBtn.addEventListener('click', () => {
@@ -899,52 +874,5 @@
             link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); mobileBtn.querySelector('i').className = 'fas fa-bars'; });
         });
     </script>
-    <!-- Modal de Consulta -->
-    <div id="inquiry-modal" class="modal-overlay">
-        <div class="modal-content relative text-white">
-            <button onclick="closeInquiryModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gold transition-colors">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            <h3 id="modal-title" class="font-serif text-2xl text-white mb-6 pr-8">Solicitar Informação</h3>
-            
-            <form id="inquiry-form" class="space-y-4">
-                <input type="hidden" id="inquiry-type" value="geral">
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-name">Nome</label>
-                        <input type="text" id="inq-fname" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="Nome">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-lname">Sobrenome</label>
-                        <input type="text" id="inq-lname" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="Sobrenome">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-phone">WhatsApp / Telefone</label>
-                    <input type="tel" id="inq-phone" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="+55 ...">
-                </div>
-                <div>
-                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-email">Email</label>
-                    <input type="email" id="inq-email" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors text-sm" placeholder="seu@email.com">
-                </div>
-                <div id="mode-selection" class="hidden">
-                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2 fade-text" data-i18n="form-mode">Modalidade</label>
-                    <div class="flex gap-4">
-                        <label class="flex items-center text-sm text-gray-400 cursor-pointer">
-                            <input type="radio" name="class-mode" value="Presencial" checked class="mr-2 accent-gold"> <span data-i18n="mode-inperson">Presencial (Brasil)</span>
-                        </label>
-                        <label class="flex items-center text-sm text-gray-400 cursor-pointer">
-                            <input type="radio" name="class-mode" value="Online" class="mr-2 accent-gold"> <span data-i18n="mode-online">Online (Exterior)</span>
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-1 fade-text" data-i18n="form-msg">Descrição do Pedido / Necessidade</label>
-                    <textarea id="inq-desc" rows="3" required class="w-full bg-transparent border-b border-gray-800 focus:border-gold text-white py-1 outline-none transition-colors resize-none text-sm" placeholder="Ex: Preciso de 5 palhetas profissionais..."></textarea>
-                </div>
-                <button type="submit" class="w-full bg-gold text-dark-deep py-3 mt-4 uppercase tracking-widest text-xs font-bold hover:bg-white transition-colors fade-text" data-i18n="btn-send-whatsapp">Enviar Orçamento por WhatsApp</button>
-            </form>
-        </div>
-    </div>
 </body>
 </html>
