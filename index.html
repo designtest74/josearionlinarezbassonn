@@ -91,6 +91,26 @@
         .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); transition: all 0.4s ease; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .carousel-dot.active { width: 24px; background-color: #CBA135; border-radius: 4px; }
 
+        .carousel-dot.active { width: 24px; background-color: #CBA135; border-radius: 4px; }
+
+        /* Animaciones para el Título del Hero */
+        @keyframes heroTextLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes heroTextBottom {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes heroLineLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes heroLineRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-gold selection:text-dark-deep">
@@ -128,7 +148,7 @@
                     <button onclick="setLanguage('es')" id="btn-es-mob" class="lang-btn-mob w-5 h-5 rounded-full overflow-hidden border border-transparent opacity-50 focus:outline-none"><img src="https://flagcdn.com/w40/es.png" alt="España" class="w-full h-full object-cover"></button>
                     <button onclick="setLanguage('en')" id="btn-en-mob" class="lang-btn-mob w-5 h-5 rounded-full overflow-hidden border border-transparent opacity-50 focus:outline-none"><img src="https://flagcdn.com/w40/gb.png" alt="Inglaterra/UK" class="w-full h-full object-cover"></button>
                 </div>
-                <button id="mobile-menu-btn" class="text-2xl text-white focus:outline-none"><i class="fas fa-bars"></i></button>
+                <button id="mobile-menu-btn" class="text-3xl text-white focus:outline-none p-3 -mr-3 cursor-pointer select-none" style="touch-action: manipulation;"><i class="fas fa-bars"></i></button>
             </div>
         </div>
 
@@ -152,9 +172,30 @@
             </div>
         </div>
 
-        <div id="hero-content" class="relative text-center z-10 mt-20 max-w-2xl mx-auto will-change-transform">
+        <div id="hero-content" class="relative text-center z-10 mt-20 max-w-3xl mx-auto will-change-transform">
             <p class="text-gold font-serif italic text-base md:text-lg mb-3 tracking-wider fade-text drop-shadow-md" data-i18n="hero-subtitle">A arte da ressonância</p>
-            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-tight fade-text drop-shadow-lg" data-i18n="hero-title">José Arion Linarez <br> <span class="text-gold italic">Bassoon</span></h1>
+            
+            <h1 class="mb-6 drop-shadow-lg">
+                <!-- Nombre -->
+                <div class="font-serif text-[27px] md:text-[43px] lg:text-[54px] text-white uppercase tracking-widest block opacity-0" style="animation: heroTextLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s;">
+                    José Arión Linarez
+                </div>
+                
+                <!-- Separador y Bassoon -->
+                <div class="flex items-center justify-center mt-4 md:mt-6 overflow-hidden relative">
+                    <!-- Línea Izquierda -->
+                    <div class="h-[1px] md:h-[2px] bg-gold flex-grow max-w-[60px] md:max-w-[120px] opacity-0" style="animation: heroLineLeft 1s ease-out forwards 1s;"></div>
+                    
+                    <!-- Palabra Bassoon -->
+                    <div class="text-gold font-serif text-xl md:text-3xl tracking-[0.3em] md:tracking-[0.4em] uppercase mx-4 md:mx-6 opacity-0" style="animation: heroTextBottom 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s;">
+                        BASSOON
+                    </div>
+                    
+                    <!-- Línea Derecha -->
+                    <div class="h-[1px] md:h-[2px] bg-gold flex-grow max-w-[60px] md:max-w-[120px] opacity-0" style="animation: heroLineRight 1s ease-out forwards 1s;"></div>
+                </div>
+            </h1>
+
             <p class="text-gray-300 max-w-xl mx-auto text-sm md:text-base font-light mb-8 fade-text drop-shadow-lg" data-i18n="hero-desc">Solista de Orquestra Sinfônica. Criador de palhetas de alta precisão. Educador internacional.</p>
         </div>
         
@@ -866,13 +907,17 @@
         }, { passive: true });
 
         const mobileBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
+        const toggleMobileMenu = (e) => {
+            if(e && e.type === 'touchstart') e.preventDefault(); // Evitar ghost clicks
             mobileMenu.classList.toggle('hidden');
             mobileBtn.querySelector('i').className = mobileMenu.classList.contains('hidden') ? 'fas fa-bars' : 'fas fa-times';
-        });
+        };
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+        mobileBtn.addEventListener('touchstart', toggleMobileMenu, {passive: false});
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); mobileBtn.querySelector('i').className = 'fas fa-bars'; });
         });
+
     </script>
 </body>
 </html>
