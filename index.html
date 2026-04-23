@@ -94,6 +94,14 @@
         .carousel-dot.active { width: 24px; background-color: #CBA135; border-radius: 4px; }
 
         /* Animaciones para el Título del Hero */
+        @keyframes heroFadeIn {
+            0% { opacity: 0; filter: blur(2px); }
+            100% { opacity: 1; filter: blur(0); }
+        }
+        @keyframes heroFadeUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
         @keyframes heroTextLeft {
             0% { transform: translateX(-100px); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
@@ -110,6 +118,46 @@
             0% { transform: translateX(100%); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
         }
+
+        /* Animaciones on-scroll (Bio y Medios) */
+        .bio-element, .media-subtitle, .media-title-left, .media-title-right { opacity: 0; will-change: transform, opacity; }
+        @keyframes bioSlideRight {
+            0% { transform: translateX(50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideFromLeft {
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes heroFadeDown {
+            0% { transform: translateY(-30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        #biografia.in-view .bio-subtitle { animation: heroFadeIn 1s ease-out forwards 0.2s; }
+        #biografia.in-view .bio-title { animation: bioSlideRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.0s; }
+        #biografia.in-view .bio-line { animation: heroFadeUp 0.8s ease-out forwards 1.8s; }
+        #biografia.in-view .bio-p:nth-child(1) { animation: heroFadeUp 0.8s ease-out forwards 2.2s; }
+        #biografia.in-view .bio-p:nth-child(2) { animation: heroFadeUp 0.8s ease-out forwards 2.4s; }
+        #biografia.in-view .bio-p:nth-child(3) { animation: heroFadeUp 0.8s ease-out forwards 2.6s; }
+        #biografia.in-view .bio-p:nth-child(4) { animation: heroFadeUp 0.8s ease-out forwards 2.8s; }
+        #biografia.in-view .bio-p:nth-child(5) { animation: heroFadeUp 0.8s ease-out forwards 3.0s; }
+        #biografia.in-view .bio-p:nth-child(6) { animation: heroFadeUp 0.8s ease-out forwards 3.2s; }
+        #biografia.in-view .bio-p:nth-child(7) { animation: heroFadeUp 0.8s ease-out forwards 3.4s; }
+
+        #medios.in-view .media-subtitle, #galeria.in-view .media-subtitle, #atelier.in-view .media-subtitle { animation: heroFadeDown 0.8s ease-out forwards 0.2s; }
+        #medios.in-view .media-title-left, #galeria.in-view .media-title-left, #atelier.in-view .media-title-left, #academia.in-view .media-title-left { animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.8s; }
+        #medios.in-view .media-title-right, #galeria.in-view .media-title-right, #atelier.in-view .media-title-right, #academia.in-view .media-title-right { animation: bioSlideRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.8s; }
+
+        .icon-anim { opacity: 0; will-change: transform, opacity; }
+        #academia.in-view .icon-anim { animation: heroFadeIn 1s ease-out forwards 0.2s; }
+
+        @keyframes charSlideFromRight {
+            0% { transform: translateX(20px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        .char-anim { opacity: 0; will-change: transform, opacity; }
+        #atelier.in-view .char-anim { animation: charSlideFromRight 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
 
     </style>
 </head>
@@ -173,30 +221,30 @@
         </div>
 
         <div id="hero-content" class="relative text-center z-10 mt-20 max-w-3xl mx-auto will-change-transform">
-            <p class="text-gold font-serif italic text-base md:text-lg mb-3 tracking-wider fade-text drop-shadow-md" data-i18n="hero-subtitle">A arte da ressonância</p>
+            <p class="text-gold font-serif italic text-base md:text-lg mb-3 tracking-wider drop-shadow-md opacity-0" style="animation: heroFadeIn 1.5s ease-out forwards 0.2s;" data-i18n="hero-subtitle">A arte da ressonância</p>
             
             <h1 class="mb-6 drop-shadow-lg">
                 <!-- Nombre -->
-                <div class="font-serif text-[27px] md:text-[43px] lg:text-[54px] text-white uppercase tracking-widest block opacity-0" style="animation: heroTextLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s;">
+                <div class="font-serif text-[27px] md:text-[43px] lg:text-[54px] text-white uppercase tracking-widest block opacity-0" style="animation: heroTextLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.2s;">
                     José Arión Linarez
                 </div>
                 
                 <!-- Separador y Bassoon -->
                 <div class="flex items-center justify-center mt-4 md:mt-6 overflow-hidden relative">
                     <!-- Línea Izquierda -->
-                    <div class="h-[1px] md:h-[2px] bg-gold flex-grow max-w-[60px] md:max-w-[120px] opacity-0" style="animation: heroLineLeft 1s ease-out forwards 1s;"></div>
+                    <div class="h-[1px] md:h-[2px] bg-gold flex-grow max-w-[60px] md:max-w-[120px] opacity-0" style="animation: heroLineLeft 1s ease-out forwards 2.2s;"></div>
                     
                     <!-- Palabra Bassoon -->
-                    <div class="text-gold font-serif text-xl md:text-3xl tracking-[0.3em] md:tracking-[0.4em] uppercase mx-4 md:mx-6 opacity-0" style="animation: heroTextBottom 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s;">
+                    <div class="text-gold font-serif text-xl md:text-3xl tracking-[0.3em] md:tracking-[0.4em] uppercase mx-4 md:mx-6 opacity-0" style="animation: heroTextBottom 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.8s;">
                         BASSOON
                     </div>
                     
                     <!-- Línea Derecha -->
-                    <div class="h-[1px] md:h-[2px] bg-gold flex-grow max-w-[60px] md:max-w-[120px] opacity-0" style="animation: heroLineRight 1s ease-out forwards 1s;"></div>
+                    <div class="h-[1px] md:h-[2px] bg-gold flex-grow max-w-[60px] md:max-w-[120px] opacity-0" style="animation: heroLineRight 1s ease-out forwards 2.2s;"></div>
                 </div>
             </h1>
 
-            <p class="text-gray-300 max-w-xl mx-auto text-sm md:text-base font-light mb-8 fade-text drop-shadow-lg" data-i18n="hero-desc">Solista de Orquestra Sinfônica. Criador de palhetas de alta precisão. Educador internacional.</p>
+            <p class="text-gray-300 max-w-xl mx-auto text-sm md:text-base font-light mb-8 drop-shadow-lg opacity-0" style="animation: heroFadeUp 1.2s ease-out forwards 3.0s;" data-i18n="hero-desc">Solista de Orquestra Sinfônica. Criador de palhetas de alta precisão. Educador internacional.</p>
         </div>
         
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
@@ -213,18 +261,18 @@
                 </div>
                 
                 <div>
-                    <p class="text-gold tracking-widest uppercase text-sm font-bold mb-2 fade-text" data-i18n="bio-subtitle">Integrante da <a href="https://osesp.art.br/osesp/pt/" target="_blank" class="underline decoration-gold/50 hover:text-white hover:decoration-white transition-colors">Osesp</a> desde: 2004</p>
-                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 fade-text" data-i18n="bio-title">Uma vida dedicada ao <span class="text-gold italic">Som Perfeito</span></h2>
-                    <div class="w-16 h-1 bg-gold mb-8"></div>
+                    <p class="text-gold tracking-widest uppercase text-sm font-bold mb-2 fade-text bio-element bio-subtitle" data-i18n="bio-subtitle">Integrante da <a href="https://osesp.art.br/osesp/pt/" target="_blank" class="underline decoration-gold/50 hover:text-white hover:decoration-white transition-colors">Osesp</a> desde: 2004</p>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 fade-text bio-element bio-title" data-i18n="bio-title">Uma vida dedicada ao <span class="text-gold italic">Som Perfeito</span></h2>
+                    <div class="w-16 h-1 bg-gold mb-8 bio-element bio-line"></div>
                     
                     <div class="space-y-4 text-gray-300 font-light leading-relaxed text-sm md:text-base">
-                        <p class="fade-text" data-i18n="bio-p1">Natural de Barquisimeto, na Venezuela, o fagotista José Arion Linarez começou os estudos musicais aos 12 anos de idade, no Conservatório de Música Blanca Estrella de Méscoli. Aos 14, decidiu estudar fagote, passando a ser orientado por Ramón Merchán e, posteriormente, por Omar Ascanio, solista da Orquestra Sinfônica Simón Bolívar.</p>
-                        <p class="fade-text" data-i18n="bio-p2">Movido pela sonoridade versátil do instrumento, apresentou os primeiros recitais e concertos ainda muito jovem. Daquela época, destaca-se a interpretação do Concerto para Fagote em Mi Menor RV 484, de Antonio Vivaldi, com o grupo Jóvenes Arcos, da Venezuela. Depois dessa apresentação, passou a realizar extensa atividade orquestral juvenil, o que o levou ao primeiro trabalho profissional no país, junto à Orquestra Sinfônica Gran Mariscal de Ayacucho, liderada por Rodolfo Saglimbeni.</p>
-                        <p class="fade-text" data-i18n="bio-p3">Em 1993, recebeu bolsa de estudos da Fundación Gran Mariscal de Ayacucho e da Universidade Carnegie Mellon, em Pittsburgh, na Pensilvânia, onde estudou com Nancy Goeres. Nos Estados Unidos, foi premiado em música de câmara pela Pittsburgh Concert Society, obteve o 2º lugar no Concurso de Música de Câmara da Escola de Música da Universidade Carnegie Mellon e o 1º lugar no Concurso Jovens Solistas da Orquestra Sinfônica Jovem de Pittsburgh.</p>
-                        <p class="fade-text" data-i18n="bio-p4">Participou de importantes festivais norte-americanos, como o Tanglewood Music Festival, o Sarasota Music Festival, o Aspen Music Festival and School e o Music Academy of the West. Frequentou ainda o Festival de Música de Schleswig-Holstein, na Alemanha, e o Semanas Musicales de Frutillar, no Chile.</p>
-                        <p class="fade-text" data-i18n="bio-p5">Como solista, apresentou-se à frente da Orquestra Sinfônica de Wheeling, da Orquestra Filarmônica da Universidade Carnegie Mellon, da Orquestra Sinfônica de Westmoreland, nos Estados Unidos, e da Orquestra Sinfônica de los Llanos, na Venezuela. Além disso, interpretou junto à Orquestra Sinfônica da Universidade de Serena, no Chile, o Concerto para Fagote em Si bemol Maior K.191, de W. A. Mozart, sob a regência de Celso Torres Mora, em 2002.</p>
-                        <p class="fade-text" data-i18n="bio-p6">Arion Liñarez foi instrutor das madeiras da Fundación de Orquestas Juveniles e Infantiles de Chile (FOJI) e fagote solista da Orquestra Sinfônica Nacional do Chile.</p>
-                        <p class="fade-text" data-i18n="bio-p7">Atualmente, José Arion Linarez toca com um fagote construído pelo renomado luthier <a href="https://www.bellbassoons.com/" target="_blank" class="text-gold hover:text-white underline decoration-gold/50 transition-colors">Benson Bell</a>.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p1">Natural de Barquisimeto, na Venezuela, o fagotista José Arion Linarez começou os estudos musicais aos 12 anos de idade, no Conservatório de Música Blanca Estrella de Méscoli. Aos 14, decidiu estudar fagote, passando a ser orientado por Ramón Merchán e, posteriormente, por Omar Ascanio, solista da Orquestra Sinfônica Simón Bolívar.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p2">Movido pela sonoridade versátil do instrumento, apresentou os primeiros recitais e concertos ainda muito jovem. Daquela época, destaca-se a interpretação do Concerto para Fagote em Mi Menor RV 484, de Antonio Vivaldi, com o grupo Jóvenes Arcos, da Venezuela. Depois dessa apresentação, passou a realizar extensa atividade orquestral juvenil, o que o levou ao primeiro trabalho profissional no país, junto à Orquestra Sinfônica Gran Mariscal de Ayacucho, liderada por Rodolfo Saglimbeni.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p3">Em 1993, recebeu bolsa de estudos da Fundación Gran Mariscal de Ayacucho e da Universidade Carnegie Mellon, em Pittsburgh, na Pensilvânia, onde estudou com Nancy Goeres. Nos Estados Unidos, foi premiado em música de câmara pela Pittsburgh Concert Society, obteve o 2º lugar no Concurso de Música de Câmara da Escola de Música da Universidade Carnegie Mellon e o 1º lugar no Concurso Jovens Solistas da Orquestra Sinfônica Jovem de Pittsburgh.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p4">Participou de importantes festivais norte-americanos, como o Tanglewood Music Festival, o Sarasota Music Festival, o Aspen Music Festival and School e o Music Academy of the West. Frequentou ainda o Festival de Música de Schleswig-Holstein, na Alemanha, e o Semanas Musicales de Frutillar, no Chile.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p5">Como solista, apresentou-se à frente da Orquestra Sinfônica de Wheeling, da Orquestra Filarmônica da Universidade Carnegie Mellon, da Orquestra Sinfônica de Westmoreland, nos Estados Unidos, e da Orquestra Sinfônica de los Llanos, na Venezuela. Além disso, interpretou junto à Orquestra Sinfônica da Universidade de Serena, no Chile, o Concerto para Fagote em Si bemol Maior K.191, de W. A. Mozart, sob a regência de Celso Torres Mora, em 2002.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p6">Arion Liñarez foi instrutor das madeiras da Fundación de Orquestas Juveniles e Infantiles de Chile (FOJI) e fagote solista da Orquestra Sinfônica Nacional do Chile.</p>
+                        <p class="fade-text bio-element bio-p" data-i18n="bio-p7">Atualmente, José Arion Linarez toca com um fagote construído pelo renomado luthier <a href="https://www.bellbassoons.com/" target="_blank" class="text-gold hover:text-white underline decoration-gold/50 transition-colors">Benson Bell</a>.</p>
                     </div>
 
                     <div class="mt-8">
@@ -240,8 +288,8 @@
         <section id="medios" class="py-24 bg-dark-paper px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <p class="text-gold tracking-widest uppercase text-sm mb-3 fade-text" data-i18n="media-subtitle">Repertório & Concertos</p>
-                    <h2 class="font-serif text-4xl md:text-5xl text-white fade-text" data-i18n="media-title">Sala de <span class="italic text-gold">Projeções</span></h2>
+                    <p class="text-gold tracking-widest uppercase text-sm mb-3 fade-text media-subtitle" data-i18n="media-subtitle">Repertório & Concertos</p>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white fade-text overflow-hidden py-1" data-i18n="media-title"><span class="inline-block media-title-left">Sala de&nbsp;</span><span class="italic text-gold inline-block media-title-right">Projeções</span></h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="luxury-card bg-dark-deep p-4 group">
@@ -270,9 +318,9 @@
 
         <section id="galeria" class="py-24 bg-dark-deep px-6 border-t border-gold/10 overflow-hidden">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <p class="text-gold tracking-widest uppercase text-sm mb-3 fade-text" data-i18n="gallery-subtitle">Encontros Musicais</p>
-                    <h2 class="font-serif text-4xl md:text-5xl text-white fade-text" data-i18n="gallery-title">A Biblioteca <span class="italic text-gold">Fotográfica</span></h2>
+                <div class="text-center mb-16 overflow-hidden">
+                    <p class="text-gold tracking-widest uppercase text-sm mb-3 fade-text media-subtitle" data-i18n="gallery-subtitle">Encontros Musicais</p>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white fade-text overflow-hidden py-1" data-i18n="gallery-title"><span class="inline-block media-title-left">A Biblioteca&nbsp;</span><span class="italic text-gold inline-block media-title-right">Fotográfica</span></h2>
                 </div>
                 
                 <div class="relative w-full h-[450px] flex items-center justify-center carousel-container">
@@ -469,8 +517,8 @@
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gold/20 pb-8">
                     <div>
-                        <p class="text-gold tracking-widest uppercase text-sm mb-3 fade-text" data-i18n="atelier-subtitle">Artesanato de Precisão</p>
-                        <h2 class="font-serif text-4xl md:text-6xl text-white fade-text" data-i18n="atelier-title">O <span class="italic text-gold">Atelier</span></h2>
+                        <p class="text-gold tracking-widest uppercase text-sm mb-3 fade-text media-subtitle" data-i18n="atelier-subtitle">Artesanato de Precisão</p>
+                        <h2 class="font-serif text-4xl md:text-6xl text-white fade-text overflow-hidden py-1" data-i18n="atelier-title"><span class="inline-block media-title-left">O&nbsp;</span><span class="italic text-gold inline-block media-title-right">Atelier</span></h2>
                     </div>
                     <p class="text-gray-400 max-w-md mt-6 md:mt-0 text-right font-light fade-text" data-i18n="atelier-desc">Cada palheta é esculpida à mão. Clique nas imagens para abrir a galeria macro.</p>
                 </div>
@@ -510,8 +558,8 @@
                 <div class="absolute inset-0 bg-dark-deep bg-opacity-95"></div>
             </div>
             <div class="relative z-10 max-w-4xl mx-auto text-center">
-                <i class="fas fa-music text-4xl text-gold mb-6"></i>
-                <h2 class="font-serif text-4xl md:text-6xl text-white mb-6 fade-text" data-i18n="academy-title">Transmita o <span class="italic text-gold">Legado</span></h2>
+                <i class="fas fa-music text-4xl text-gold mb-6 icon-anim"></i>
+                <h2 class="font-serif text-4xl md:text-6xl text-white mb-6 fade-text overflow-hidden py-1" data-i18n="academy-title"><span class="inline-block media-title-left">Transmita o&nbsp;</span><span class="italic text-gold inline-block media-title-right">Legado</span></h2>
                 <p class="text-xl text-gray-300 font-light mb-12 max-w-2xl mx-auto fade-text" data-i18n="academy-desc">Junte-se à academia boutique. Masterclasses online 1 a 1 e preparação exaustiva para audições.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
                     <button onclick="prepareContact('form-opt2')" class="bg-gold text-dark-deep px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-white transition-colors fade-text" data-i18n="academy-btn1">Agendar Audição</button>
@@ -526,7 +574,7 @@
                     <h2 class="font-serif text-4xl text-white mb-8 fade-text" data-i18n="contact-title">Entre em <span class="italic text-gold">Contato</span></h2>
                     <p class="text-gray-400 mb-8 font-light fade-text" data-i18n="contact-desc">Para contratações de concertos, aulas particulares ou pedidos de palhetas, use o formulário.</p>
                     <div class="space-y-4 mb-8">
-                        <div class="flex items-center text-gray-300"><i class="fas fa-envelope w-8 text-gold"></i><span>maestro@fagotista-elegante.com</span></div>
+                        <div class="flex items-center text-gray-300"><i class="fas fa-envelope w-8 text-gold"></i><span>linarez27@yahoo.com</span></div>
                         <div class="flex items-center text-gray-300"><i class="fas fa-map-marker-alt w-8 text-gold"></i><span class="fade-text" data-i18n="contact-loc">Envios internacionais do Atelier principal.</span></div>
                     </div>
                     <div class="flex space-x-6">
@@ -603,9 +651,9 @@
                 'hero-subtitle': 'A arte da ressonância', 'hero-title': 'José Arion Linarez <br> <span class="text-gold italic">Bassoon</span>', 'hero-desc': 'Solista de Orquestra Sinfônica. Criador de palhetas de alta precisão. Educador internacional.', 'hero-btn-1': 'Ouvir Solos', 'hero-btn-2': 'Visitar o Atelier',
                 'bio-subtitle': 'Integrante da <a href="https://osesp.art.br/osesp/pt/" target="_blank" class="underline decoration-gold/50 hover:text-white hover:decoration-white transition-colors">Osesp</a> desde: 2004', 'bio-title': 'Uma vida dedicada ao <span class="text-gold italic">Som Perfeito</span>',
                 'bio-p1': 'Natural de Barquisimeto, na Venezuela, o fagotista José Arion Linarez começou os estudos musicais aos 12 anos...', 'bio-btn': 'Baixar Press Kit',
-                'media-subtitle': 'Repertório & Concertos', 'media-title': 'Sala de <span class="italic text-gold">Projeções</span>',
+                'media-subtitle': 'Repertório & Concertos', 'media-title': '<span class="inline-block media-title-left">Sala de&nbsp;</span><span class="italic text-gold inline-block media-title-right">Projeções</span>',
                 'vid1-title': 'Mozart: Concerto para Fagote', 'vid1-desc': 'Junto à Orquestra Sinfônica Nacional.', 'vid2-title': 'Stravinsky: Sagração da Primavera', 'vid2-desc': 'Demonstração técnica.',
-                'gallery-subtitle': 'Encontros Musicais', 'gallery-title': 'A Biblioteca <span class="italic text-gold">Fotográfica</span>',
+                'gallery-subtitle': 'Encontros Musicais', 'gallery-title': '<span class="inline-block media-title-left">A Biblioteca&nbsp;</span><span class="italic text-gold inline-block media-title-right">Fotográfica</span>',
                 'gallery-img1-title': 'OSESP', 'gallery-img1-desc': 'Temporada OSESP março 2026.', 
                 
                 'gallery-img2-title': 'Sala São Paulo', 'gallery-img2-desc': 'Concerto com OSESP 2020.',
@@ -620,10 +668,10 @@
                 'gallery-img15-title': 'Maestro Heinz Holliger', 'gallery-img15-desc': 'Com o Maestro Heinz Holliger. São Paulo.',
                 'gallery-img16-title': 'Grupo Camaleão Bassonns', 'gallery-img16-desc': 'São Paulo.',
                 'gallery-img17-title': 'Aula com alunos iniciantes', 'gallery-img17-desc': 'Yaracuy (2023).',
-                'atelier-subtitle': 'Artesanato de Precisão', 'atelier-title': 'O <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Cada palheta é esculpida à mão. Clique nas imagens para abrir a galeria macro.',
+                'atelier-subtitle': 'Artesanato de Precisão', 'atelier-title': '<span class="inline-block media-title-left">O&nbsp;</span><span class="italic text-gold inline-block media-title-right">Atelier</span>', 'atelier-desc': 'Cada palheta é esculpida à mão. Clique nas imagens para abrir a galeria macro.',
                 'prod1-title': 'Palheta Profissional', 'prod1-desc': 'Afinação impecável. Raspagem europeia.', 'btn-whatsapp': 'Solicitar por WhatsApp',
                 'prod2-title': 'Palheta Estudante', 'prod2-desc': 'Projetada para controle fácil.',
-                'academy-title': 'Transmita o <span class="italic text-gold">Legado</span>', 'academy-desc': 'Masterclasses online 1 a 1.', 'academy-btn1': 'Agendar Audição', 'academy-btn2': 'Info de Cursos',
+                'academy-title': '<span class="inline-block media-title-left">Transmita o&nbsp;</span><span class="italic text-gold inline-block media-title-right">Legado</span>', 'academy-desc': 'Masterclasses online 1 a 1.', 'academy-btn1': 'Agendar Audição', 'academy-btn2': 'Info de Cursos',
                 'contact-title': 'Entre em <span class="italic text-gold">Contato</span>', 'contact-desc': 'Para contratações e aulas.', 'contact-loc': 'Envios internacionais.',
                 'form-name': 'Nome', 'form-name-ph': 'Seu nome', 'form-lname': 'Sobrenome', 'form-phone': 'Telefone', 'form-email': 'Email', 'form-email-ph': 'seu@email.com', 'form-subj': 'Assunto', 'form-mode': 'Modalidade', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1a': 'Palheta Profissional', 'form-opt1b': 'Palheta Estudante', 'form-opt2': 'Masterclasses', 'form-opt3': 'Contratação', 'form-msg': 'Mensagem', 'form-msg-ph': 'Mensagem...', 'form-btn': 'Enviar Mensagem', 'btn-send-whatsapp': 'Enviar por WhatsApp',
                 'audio-track': 'Mozart: Andante e Rondo'
@@ -633,9 +681,9 @@
                 'hero-subtitle': 'El arte de la resonancia', 'hero-title': 'José Arion Linarez <br> <span class="text-gold italic">Bassoon</span>', 'hero-desc': 'Solista de Orquesta Sinfónica. Creador de cañas de alta precisión.', 'hero-btn-1': 'Escuchar Solos', 'hero-btn-2': 'Visitar el Atelier',
                 'bio-subtitle': 'Integrante de <a href="https://osesp.art.br/osesp/pt/" target="_blank" class="text-gold">Osesp</a> desde: 2004', 'bio-title': 'Una vida dedicada al <span class="text-gold italic">Sonido Perfecto</span>',
                 'bio-p1': 'Natural de Barquisimeto, Venezuela...', 'bio-btn': 'Descargar Press Kit',
-                'media-subtitle': 'Repertorio & Conciertos', 'media-title': 'Sala de <span class="italic text-gold">Projecciones</span>',
+                'media-subtitle': 'Repertorio & Conciertos', 'media-title': '<span class="inline-block media-title-left">Sala de&nbsp;</span><span class="italic text-gold inline-block media-title-right">Projecciones</span>',
                 'vid1-title': 'Mozart: Concierto para Fagot', 'vid1-desc': 'Junto a la Orquesta Nacional.', 'vid2-title': 'Stravinsky: La Consagración', 'vid2-desc': 'Demostración técnica.',
-                'gallery-subtitle': 'Encuentros Musicales', 'gallery-title': 'La Biblioteca <span class="italic text-gold">Fotográfica</span>',
+                'gallery-subtitle': 'Encuentros Musicales', 'gallery-title': '<span class="inline-block media-title-left">La Biblioteca&nbsp;</span><span class="italic text-gold inline-block media-title-right">Fotográfica</span>',
                 'gallery-img1-title': 'OSESP', 'gallery-img1-desc': 'Temporada OSESP.', 
                 
                 'gallery-img2-title': 'Sala São Paulo', 'gallery-img2-desc': 'Concierto con OSESP 2020.',
@@ -650,10 +698,10 @@
                 'gallery-img15-title': 'Maestro Heinz Holliger', 'gallery-img15-desc': 'São Paulo.',
                 'gallery-img16-title': 'Grupo Camaleão Bassonns', 'gallery-img16-desc': 'São Paulo.',
                 'gallery-img17-title': 'Clase con alumnos principiantes', 'gallery-img17-desc': 'Yaracuy (2023).',
-                'atelier-subtitle': 'Artesanía', 'atelier-title': 'El <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Cañas talladas a mano. Haz clic en las imágenes para abrir la galería macro.',
+                'atelier-subtitle': 'Artesanía', 'atelier-title': '<span class="inline-block media-title-left">El&nbsp;</span><span class="italic text-gold inline-block media-title-right">Atelier</span>', 'atelier-desc': 'Cañas talladas a mano. Haz clic en las imágenes para abrir la galería macro.',
                 'prod1-title': 'Caña Profesional', 'prod1-desc': 'Afinación impecable.', 'btn-whatsapp': 'Solicitar por WhatsApp',
                 'prod2-title': 'Caña Estudiante', 'prod2-desc': 'Respuesta fácil.',
-                'academy-title': 'Transmite el <span class="italic text-gold">Legado</span>', 'academy-desc': 'Clases magistrales 1 a 1.', 'academy-btn1': 'Agendar', 'academy-btn2': 'Info',
+                'academy-title': '<span class="inline-block media-title-left">Transmite el&nbsp;</span><span class="italic text-gold inline-block media-title-right">Legado</span>', 'academy-desc': 'Clases magistrales 1 a 1.', 'academy-btn1': 'Agendar', 'academy-btn2': 'Info',
                 'contact-title': 'Ponte en <span class="italic text-gold">Contacto</span>', 'contact-desc': 'Contrataciones y clases.', 'contact-loc': 'Envíos internacionales.',
                 'form-name': 'Nombre', 'form-name-ph': 'Tu nombre', 'form-lname': 'Apellido', 'form-phone': 'Teléfono', 'form-email': 'Email', 'form-email-ph': 'tu@email.com', 'form-subj': 'Asunto', 'form-mode': 'Modalidad', 'mode-inperson': 'Presencial', 'mode-online': 'Online', 'form-opt1a': 'Caña Profesional', 'form-opt1b': 'Caña Estudiante', 'form-opt2': 'Clases', 'form-opt3': 'Contratación', 'form-msg': 'Mensaje', 'form-msg-ph': 'Mensaje...', 'form-btn': 'Enviar', 'btn-send-whatsapp': 'Enviar por WhatsApp',
                 'audio-track': 'Mozart: Andante y Rondo'
@@ -663,9 +711,9 @@
                 'hero-subtitle': 'The art of resonance', 'hero-title': 'José Arion Linarez <br> <span class="text-gold italic">Bassoon</span>', 'hero-desc': 'Symphony Orchestra Soloist. Reed maker.', 'hero-btn-1': 'Listen', 'hero-btn-2': 'Visit Atelier',
                 'bio-subtitle': 'Member of Osesp since: 2004', 'bio-title': 'A life dedicated to <span class="text-gold italic">Perfect Sound</span>',
                 'bio-p1': 'Born in Venezuela...', 'bio-btn': 'Press Kit',
-                'media-subtitle': 'Repertoire', 'media-title': 'Screening <span class="italic text-gold">Room</span>',
+                'media-subtitle': 'Repertoire', 'media-title': '<span class="inline-block media-title-left">Screening&nbsp;</span><span class="italic text-gold inline-block media-title-right">Room</span>',
                 'vid1-title': 'Mozart: Bassoon Concerto', 'vid1-desc': 'Allegro.', 'vid2-title': 'Stravinsky: Rite of Spring', 'vid2-desc': 'Technical demo.',
-                'gallery-subtitle': 'Encounters', 'gallery-title': 'Photo <span class="italic text-gold">Library</span>',
+                'gallery-subtitle': 'Encounters', 'gallery-title': '<span class="inline-block media-title-left">Photo&nbsp;</span><span class="italic text-gold inline-block media-title-right">Library</span>',
                 'gallery-img1-title': 'OSESP', 'gallery-img1-desc': 'Season 2026.', 
                 
                 'gallery-img2-title': 'Sala São Paulo', 'gallery-img2-desc': 'Concert with OSESP 2020.',
@@ -680,10 +728,10 @@
                 'gallery-img15-title': 'Maestro Heinz Holliger', 'gallery-img15-desc': 'São Paulo.',
                 'gallery-img16-title': 'Camaleão Bassonns Group', 'gallery-img16-desc': 'São Paulo.',
                 'gallery-img17-title': 'Lesson with beginners', 'gallery-img17-desc': 'Yaracuy (2023).',
-                'atelier-subtitle': 'Craftsmanship', 'atelier-title': 'The <span class="italic text-gold">Atelier</span>', 'atelier-desc': 'Hand-carved reeds. Click on the images to open the macro gallery.',
+                'atelier-subtitle': 'Craftsmanship', 'atelier-title': '<span class="inline-block media-title-left">The&nbsp;</span><span class="italic text-gold inline-block media-title-right">Atelier</span>', 'atelier-desc': 'Hand-carved reeds. Click on the images to open the macro gallery.',
                 'prod1-title': 'Professional Reed', 'prod1-desc': 'Impeccable tuning.', 'btn-whatsapp': 'Request via WhatsApp',
                 'prod2-title': 'Student Reed', 'prod2-desc': 'Easy response.',
-                'academy-title': 'Pass on the <span class="italic text-gold">Legacy</span>', 'academy-desc': '1-on-1 masterclasses.', 'academy-btn1': 'Schedule', 'academy-btn2': 'Info',
+                'academy-title': '<span class="inline-block media-title-left">Pass on the&nbsp;</span><span class="italic text-gold inline-block media-title-right">Legacy</span>', 'academy-desc': '1-on-1 masterclasses.', 'academy-btn1': 'Schedule', 'academy-btn2': 'Info',
                 'contact-title': 'Get in <span class="italic text-gold">Touch</span>', 'contact-desc': 'Bookings and lessons.', 'contact-loc': 'International shipping.',
                 'form-name': 'First Name', 'form-name-ph': 'Name', 'form-lname': 'Last Name', 'form-phone': 'Phone Number', 'form-email': 'Email', 'form-email-ph': 'email@...', 'form-subj': 'Subject', 'form-mode': 'Mode', 'mode-inperson': 'In-person', 'mode-online': 'Online', 'form-opt1a': 'Professional Reed', 'form-opt1b': 'Student Reed', 'form-opt2': 'Masterclass', 'form-opt3': 'Booking', 'form-msg': 'Message', 'form-msg-ph': 'Message...', 'form-btn': 'Send', 'btn-send-whatsapp': 'Send via WhatsApp',
                 'audio-track': 'Mozart: Andante and Rondo'
@@ -694,7 +742,26 @@
             document.documentElement.lang = lang;
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+                if (translations[lang] && translations[lang][key]) {
+                    if (key === 'atelier-desc') {
+                        const text = translations[lang][key];
+                        let html = '';
+                        const words = text.split(' ');
+                        let charIndex = 0;
+                        for(let w = 0; w < words.length; w++) {
+                            html += '<span class="inline-block whitespace-nowrap">';
+                            for(let i = 0; i < words[w].length; i++) {
+                                html += `<span class="inline-block char-anim" style="animation-delay: ${(charIndex * 0.02) + 0.8}s">${words[w][i]}</span>`;
+                                charIndex++;
+                            }
+                            html += '</span> ';
+                            charIndex++;
+                        }
+                        el.innerHTML = html;
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
             });
             document.querySelectorAll('[data-i18n-ph]').forEach(el => {
                 const key = el.getAttribute('data-i18n-ph');
@@ -821,6 +888,27 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage('pt');
+            
+            // Observer for Biografia animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            const bioSection = document.getElementById('biografia');
+            if (bioSection) observer.observe(bioSection);
+            const mediosSection = document.getElementById('medios');
+            if (mediosSection) observer.observe(mediosSection);
+            const gallerySection = document.getElementById('galeria');
+            if (gallerySection) observer.observe(gallerySection);
+            const atelierSection = document.getElementById('atelier');
+            if (atelierSection) observer.observe(atelierSection);
+            const academiaSection = document.getElementById('academia');
+            if (academiaSection) observer.observe(academiaSection);
+
             if(carouselItems && carouselItems.length > 0) {
                 if(dotsContainer) {
                     carouselItems.forEach((_, i) => {
